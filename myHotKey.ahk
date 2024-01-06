@@ -3,7 +3,7 @@
 	SendInput, ^c
 	Sleep 500
 	;ToolTip %clipboard%
-	RegExMatch(Clipboard, "\[(.*?)\]", matches)
+	RegExMatch(Clipboard, "\[(.*)\]", matches)
 	length := StrLen(matches)
     str := SubStr(matches, 2,length-3)
 	str1:="`$"
@@ -14,7 +14,7 @@ return
 	SendInput, ^c
 	Sleep 500
 	;ToolTip %clipboard%
-	RegExMatch(Clipboard, "\[(.*?)\]", matches)
+	RegExMatch(Clipboard, "\[(.*)\]", matches)
 	length := StrLen(matches)
     str := SubStr(matches, 2,length-3)
 	str1:="`\begin`{equation`}`n"
@@ -30,12 +30,3 @@ str2:="{{}`\cite{{}{}}{}}"
 str3:=str1 . str2
 Send, %str3%
 return
-
-#If WinActive("ahk_exe TeXstudio.exe")
-^a::
-str1:="`\textsuperscript`{`\cite`{2022Quantum`}`}"
-str2:="{{}`\cite{{}{}}{}}"
-str3:=str1 . str2
-Send, %str3%
-return
-Code.exe
